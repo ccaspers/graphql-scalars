@@ -11,7 +11,7 @@ export const GraphQLObjectID = /*#__PURE__*/ new GraphQLScalarType({
 
   serialize(value: string) {
     if (!MONGODB_OBJECTID_REGEX.test(value)) {
-      throw createGraphQLError(`Value is not a valid mongodb object id of form: ${value}`);
+      throw createGraphQLError(`Value '${value}' is not a valid mongodb object id. It should consist of 24 hexadecimal characters (e.g. '5e5677d71bdc2ae76344968c').`);
     }
 
     return value;
@@ -19,7 +19,7 @@ export const GraphQLObjectID = /*#__PURE__*/ new GraphQLScalarType({
 
   parseValue(value: string) {
     if (!MONGODB_OBJECTID_REGEX.test(value)) {
-      throw createGraphQLError(`Value is not a valid mongodb object id of form: ${value}`);
+      throw createGraphQLError(`Value '${value}' is not a valid mongodb object id. It should consist of 24 hexadecimal characters (e.g. '5e5677d71bdc2ae76344968c').`);
     }
 
     return value;
@@ -36,7 +36,7 @@ export const GraphQLObjectID = /*#__PURE__*/ new GraphQLScalarType({
     }
 
     if (!MONGODB_OBJECTID_REGEX.test(ast.value)) {
-      throw createGraphQLError(`Value is not a valid mongodb object id of form: ${ast.value}`, {
+      throw createGraphQLError(`Value '${ast.value}' is not a valid mongodb object id. It should consist of 24 hexadecimal characters (e.g. '5e5677d71bdc2ae76344968c').`, {
         nodes: ast,
       });
     }
